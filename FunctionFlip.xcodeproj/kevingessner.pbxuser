@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	089C165DFE840E0CC02AAC07 /* English */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{95, 0}";
+			sepNavVisRange = "{0, 95}";
+			sepNavWindowFrame = "{{92, 26}, {1007, 752}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeArchitecturePreference = x86_64;
+		activeBuildConfigurationName = Release;
+		activeExecutable = BC8D67A90E04C92500E866A8 /* FFHelperApp */;
+		activeSDKPreference = macosx10.5;
+		activeTarget = BC18C17D0E6DC17A00F11272 /* FunctionFlip */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* FFHelperApp */,
+		);
+		codeSenseManager = BC8D67BB0E04C93700E866A8 /* Code sense */;
+		executables = (
+			BC8D67A90E04C92500E866A8 /* FFHelperApp */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					131,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					243,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					203,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 285282016;
+			PBXWorkspaceStateSaveDate = 285282016;
+		};
+		sourceControlManager = BC8D67BA0E04C93700E866A8 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 255}";
+			sepNavWindowFrame = "{{38, 194}, {750, 558}}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* FunctionFlip_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{163, 0}";
+			sepNavVisRange = "{0, 174}";
+			sepNavWindowFrame = "{{433, 175}, {1007, 752}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* FFHelperApp */ = {
+		activeExec = 0;
+		executables = (
+			BC8D67A90E04C92500E866A8 /* FFHelperApp */,
+		);
+	};
+	8D1107310486CEB800E47090 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {781, 450}}";
+			sepNavSelRange = "{712, 0}";
+			sepNavVisRange = "{0, 886}";
+			sepNavWindowFrame = "{{89, 186}, {1007, 752}}";
+		};
+	};
+	BC08645A0EB0E07100ED0276 /* FFHIDEvent.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{729, 0}";
+			sepNavVisRange = "{0, 737}";
+			sepNavWindowFrame = "{{447, 26}, {1007, 752}}";
+		};
+	};
+	BC08645B0EB0E07100ED0276 /* FFHIDEvent.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 686}}";
+			sepNavSelRange = "{1201, 0}";
+			sepNavVisRange = "{40, 1190}";
+			sepNavWindowFrame = "{{141, 26}, {1007, 752}}";
+		};
+	};
+	BC0BB52B1070213200CFDE9C /* DDHidAppleRemote.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 962}}";
+			sepNavSelRange = "{634, 0}";
+			sepNavVisRange = "{0, 1716}";
+			sepNavWindowFrame = "{{40, 0}, {1007, 752}}";
+		};
+	};
+	BC0BB52E1070213200CFDE9C /* DDHidDevice.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {439, 8148}}";
+			sepNavSelRange = "{1257, 32}";
+			sepNavVisRange = "{1172, 193}";
+		};
+	};
+	BC0BB52F1070213200CFDE9C /* DDHidElement.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {921, 832}}";
+			sepNavSelRange = "{522, 0}";
+			sepNavVisRange = "{0, 1768}";
+			sepNavWindowFrame = "{{78, 172}, {980, 830}}";
+		};
+	};
+	BC0BB5361070213200CFDE9C /* DDHidKeyboard.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {706, 2240}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1124, 1192}";
+			sepNavWindowFrame = "{{55, 274}, {765, 749}}";
+		};
+	};
+	BC14AFB10EB37A3D004A1324 /* FFKeyboard.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{114, 0}";
+			sepNavVisRange = "{0, 656}";
+			sepNavWindowFrame = "{{40, 0}, {1007, 752}}";
+		};
+	};
+	BC14AFB20EB37A3D004A1324 /* FFKeyboard.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1335, 1196}}";
+			sepNavSelRange = "{2933, 0}";
+			sepNavVisRange = "{0, 2026}";
+			sepNavWindowFrame = "{{236, 2}, {1007, 752}}";
+		};
+	};
+	BC18C17D0E6DC17A00F11272 /* FunctionFlip */ = {
+		activeExec = 0;
+	};
+	BC18C17F0E6DC17A00F11272 /* FFPrefPane-Info.plist */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{710, 0}";
+			sepNavVisRange = "{0, 985}";
+			sepNavWindowFrame = "{{428, 94}, {1007, 752}}";
+		};
+	};
+	BC18C18E0E6DC26000F11272 /* FFPrefPaneController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 637}}";
+			sepNavSelRange = "{634, 0}";
+			sepNavVisRange = "{3, 1189}";
+			sepNavWindowFrame = "{{213, 26}, {1007, 752}}";
+		};
+	};
+	BC18C18F0E6DC26000F11272 /* FFPrefPaneController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1265, 1690}}";
+			sepNavSelRange = "{256, 0}";
+			sepNavVisRange = "{0, 1718}";
+			sepNavWindowFrame = "{{213, 26}, {1007, 752}}";
+		};
+	};
+	BC23BD070E0993C100B32D10 /* NSDictionary+firstKeyForObject.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 288}";
+			sepNavWindowFrame = "{{38, 194}, {750, 558}}";
+		};
+	};
+	BC23BD080E0993C100B32D10 /* NSDictionary+firstKeyForObject.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {921, 702}}";
+			sepNavSelRange = "{182, 17}";
+			sepNavVisRange = "{0, 433}";
+			sepNavWindowFrame = "{{38, 194}, {750, 558}}";
+		};
+	};
+	BC37777B0E747396009142EC /* FFKey.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{496, 0}";
+			sepNavVisRange = "{0, 503}";
+			sepNavWindowFrame = "{{57, 26}, {1007, 752}}";
+		};
+	};
+	BC37777C0E747396009142EC /* FFKey.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1008, 658}}";
+			sepNavSelRange = "{494, 0}";
+			sepNavVisRange = "{15, 1030}";
+			sepNavWindowFrame = "{{42, 250}, {1007, 752}}";
+		};
+	};
+	BC3AA35F0E4F4A2B007216B1 /* NSString+numericCompare.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {921, 702}}";
+			sepNavSelRange = "{152, 0}";
+			sepNavVisRange = "{0, 290}";
+		};
+	};
+	BC7EA5080E522910005C0FF0 /* KGLoginController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{323, 0}";
+			sepNavVisRange = "{0, 330}";
+			sepNavWindowFrame = "{{465, 101}, {1007, 752}}";
+		};
+	};
+	BC7EA5090E522910005C0FF0 /* KGLoginController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 952}}";
+			sepNavSelRange = "{276, 0}";
+			sepNavVisRange = "{0, 1435}";
+			sepNavWindowFrame = "{{93, 222}, {1007, 752}}";
+		};
+	};
+	BC7EA5240E522B1F005C0FF0 /* LoginItemsAE.c */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {588, 10444}}";
+			sepNavSelRange = "{6702, 0}";
+			sepNavVisRange = "{7699, 367}";
+			sepNavWindowFrame = "{{38, 0}, {1007, 752}}";
+		};
+	};
+	BC7EA5250E522B1F005C0FF0 /* LoginItemsAE.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 1260}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2643}";
+			sepNavWindowFrame = "{{15, 21}, {1007, 752}}";
+		};
+	};
+	BC8D67A90E04C92500E866A8 /* FFHelperApp */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = FFHelperApp;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	BC8D67BA0E04C93700E866A8 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	BC8D67BB0E04C93700E866A8 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	BC8D67BE0E04C9B000E866A8 /* FFHelperApp.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {921, 677}}";
+			sepNavSelRange = "{436, 0}";
+			sepNavVisRange = "{0, 1555}";
+			sepNavWindowFrame = "{{55, 193}, {980, 830}}";
+		};
+	};
+	BC8D67BF0E04C9B000E866A8 /* FFHelperApp.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2427, 3016}}";
+			sepNavSelRange = "{1712, 0}";
+			sepNavVisRange = "{0, 1519}";
+			sepNavWindowFrame = "{{92, 26}, {1007, 752}}";
+		};
+	};
+	BCB4A3100E743D3C00EC2AA9 /* FFPreferenceManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{172, 0}";
+			sepNavVisRange = "{0, 296}";
+			sepNavWindowFrame = "{{545, 118}, {1007, 752}}";
+		};
+	};
+	BCB4A3110E743D3C00EC2AA9 /* FFPreferenceManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{701, 0}";
+			sepNavVisRange = "{0, 1102}";
+			sepNavWindowFrame = "{{86, 0}, {1007, 752}}";
+		};
+	};
+	BCE58CA80EFB0C82001C0F7A /* USBNotifier.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{212, 0}";
+			sepNavVisRange = "{0, 212}";
+			sepNavWindowFrame = "{{51, 26}, {1007, 752}}";
+		};
+	};
+	BCE58CA90EFB0C82001C0F7A /* USBNotifier.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 2002}}";
+			sepNavSelRange = "{869, 0}";
+			sepNavVisRange = "{0, 1709}";
+			sepNavWindowFrame = "{{135, 26}, {1007, 752}}";
+		};
+	};
+	BCF6875E0E79850600DEA9CD /* FFHelperAppController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{281, 0}";
+			sepNavVisRange = "{0, 402}";
+			sepNavWindowFrame = "{{199, 26}, {1007, 752}}";
+		};
+	};
+	BCF6875F0E79850600DEA9CD /* FFHelperAppController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 962}}";
+			sepNavSelRange = "{2287, 0}";
+			sepNavVisRange = "{703, 1683}";
+			sepNavWindowFrame = "{{213, 26}, {1007, 752}}";
+		};
+	};
+	BCF776CE0E6EF0DB004AEC05 /* FFDefs.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 1365}}";
+			sepNavSelRange = "{397, 0}";
+			sepNavVisRange = "{0, 1692}";
+			sepNavWindowFrame = "{{264, 180}, {1007, 752}}";
+		};
+	};
+	BCF776D20E6EF386004AEC05 /* FFKeyLibrary.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {921, 677}}";
+			sepNavSelRange = "{729, 0}";
+			sepNavVisRange = "{0, 1744}";
+			sepNavWindowFrame = "{{55, 193}, {980, 830}}";
+		};
+	};
+	BCF776D30E6EF386004AEC05 /* FFKeyLibrary.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {5752, 1079}}";
+			sepNavSelRange = "{58, 0}";
+			sepNavVisRange = "{0, 4197}";
+			sepNavWindowFrame = "{{109, 22}, {1007, 752}}";
+		};
+	};
+	BCFBBCD10EB7569A00212F90 /* FFUpdateSheetController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 624}}";
+			sepNavSelRange = "{479, 0}";
+			sepNavVisRange = "{0, 479}";
+			sepNavWindowFrame = "{{604, 26}, {1007, 752}}";
+		};
+	};
+	BCFBBCD20EB7569A00212F90 /* FFUpdateSheetController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {948, 756}}";
+			sepNavSelRange = "{371, 0}";
+			sepNavVisRange = "{194, 1196}";
+			sepNavWindowFrame = "{{78, 26}, {1007, 752}}";
+		};
+	};
+}
