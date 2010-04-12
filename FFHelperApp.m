@@ -93,14 +93,11 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 		if([[[FFPreferenceManager sharedInstance] valueForKey:[NSString stringWithFormat:@"flipped.%@.%@", [event.keyboard.device productName], [event keyId]]] boolValue]) {
 			NSNumber *regularKey = [FFKeyLibrary keycodeForKeyId:[event keyId]];
 			if(nil != regularKey) {
-				// create a new event, with the new key, but everything else (now including modifiers) the same
-				NSEvent *newE = [NSEvent keyEventWithType:(keyState ? NSKeyDown : NSKeyUp) location:[e locationInWindow] modifierFlags:[e modifierFlags] timestamp:[e timestamp] windowNumber:[e windowNumber] context:[e context] characters:@"" charactersIgnoringModifiers:@"" isARepeat:keyRepeat keyCode:[regularKey intValue]];
-				CGEventPost(kCGAnnotatedSessionEventTap, [newE CGEvent]);
-				//CGEventTapPostEvent(proxy, [newE CGEvent]);
-				//return NULL;
-				CGEventRef newEvent = [newE CGEvent];
-				CFRetain(newEvent); // newEvent gets released by the event system
-				return newEvent;
+                NSLog(@"1 %d", keyState);
+                CGEventSourceRef sourceRef = CGEventCreateSourceFromEvent(ev);
+                CGEventRef newEvent = CGEventCreateKeyboardEvent(sourceRef, [regularKey intValue], keyState);
+                CFRelease(sourceRef);
+                return newEvent;
 			}
 		}
 	// we're getting a normal key event
@@ -123,11 +120,9 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 				} else {
 					newE = [NSEvent otherEventWithType:NSSystemDefined location:[e locationInWindow] modifierFlags:([e modifierFlags] | ([e type] == NSKeyDown ? 0xa00 : 0xb00)) timestamp:[e timestamp] windowNumber:[e windowNumber] context:[e context] subtype:8 data1:(specialCode << 16) + (([e type] == NSKeyDown  ? 0x0a : 0x0b) << 8) data2:-1];
 				}
-				CGEventTapPostEvent(proxy, [newE CGEvent]);
-				return NULL;
-				//CGEventRef newEvent = [newE CGEvent];
-				//CFRetain(newEvent); // newEvent gets released by the event system
-				//return newEvent;
+                CGEventRef newEvent = [newE CGEvent];
+				CFRetain(newEvent); // newEvent gets released by the event system
+				return newEvent;
 			}
 		}
 	}
@@ -152,7 +147,7 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
   eventMask = ((1 << kCGEventKeyDown) | (1 << kCGEventKeyUp));
   
   // try creating an event tap just for keypresses. if it fails, we need Universal Access.
-  eventTapTest = CGEventTapCreate(kCGSessionEventTap, kCGHeadInsertEventTap, 0,
+  eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
 			      eventMask, myCGEventCallback, NULL);
   if (!eventTapTest) {
 	NSLog(@"no tap");
