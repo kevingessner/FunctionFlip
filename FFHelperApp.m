@@ -65,11 +65,6 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 	*/
 	BOOL regular_like_special = ( ([e type] == NSKeyDown || [e type] == NSKeyUp) && [FFKeyLibrary isRegularKeyLikeSpecialKey:[e keyCode]] );
 	
-    // RE: commented code in this section: see
-    // http://stackoverflow.com/questions/553284/event-taps-varying-results-with-cgeventpost-kcgsessioneventtap-kcgannotatedses
-    // and
-    // http://lists.apple.com/archives/quartz-dev/2009/Feb/msg00047.html
-    
 	// We're getting a special event, or an expose key
 	if( ([e type] == NSSystemDefined && [e subtype] == 8) || regular_like_special ) {
 		int keyCode, keyState, keyRepeat;
@@ -93,7 +88,6 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 		if([[[FFPreferenceManager sharedInstance] valueForKey:[NSString stringWithFormat:@"flipped.%@.%@", [event.keyboard.device productName], [event keyId]]] boolValue]) {
 			NSNumber *regularKey = [FFKeyLibrary keycodeForKeyId:[event keyId]];
 			if(nil != regularKey) {
-                NSLog(@"1 %d", keyState);
                 CGEventSourceRef sourceRef = CGEventCreateSourceFromEvent(ev);
                 CGEventRef newEvent = CGEventCreateKeyboardEvent(sourceRef, [regularKey intValue], keyState);
                 CFRelease(sourceRef);
