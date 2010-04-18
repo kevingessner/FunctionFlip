@@ -19,9 +19,9 @@
 	<key>CFBundleSignature</key>
 	<string>KGKG</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.2</string>
+	<string>2.1beta1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.2</string>
+	<string>2.1beta1</string>
 	<key>NSMainNibFile</key>
 	<string>FFPrefPane</string>
 	<key>NSPrefPaneIconFile</key>
