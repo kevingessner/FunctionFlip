@@ -64,6 +64,7 @@
 #define FF_BRIGHTNESS_UP_ID_EXTERNAL @"0xff010020" // for external keyboards
 #define FF_EXPOSE_ID @"0xff010010"
 #define FF_DASHBOARD_ID @"0xff010002"
+#define FF_LAUNCHPAD_ID @"0xff010004"
 #define FF_ILLUMINATION_TOGGLE_ID @"0x00ff0007"
 #define FF_ILLUMINATION_DOWN_ID @"0x00ff0009"
 #define FF_ILLUMINATION_UP_ID @"0x00ff0008"
@@ -75,8 +76,11 @@
 #define FF_VOLUME_DOWN_ID @"0x000C00EA"
 #define FF_VOLUME_UP_ID @"0x000C00E9"
 
+// from http://www.opensource.apple.com/source/IOHIDFamily/IOHIDFamily-368.13/IOHIDFamily/IOHIDKeyboard.cpp,
+// IOHIDKeyboard::defaultKeymapOfLength (grep for "dashboard")
 #define KG_EXPOSE_KEY 160
 #define KG_DASHBOARD_KEY 130
+#define KG_LAUNCHPAD_KEY 131
 #define KG_BRIGHTNESS_UP_KEY 144
 #define KG_BRIGHTNESS_DOWN_KEY 145
 
