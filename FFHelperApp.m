@@ -27,6 +27,7 @@
 
 #import "FFHelperApp.h"
 #include <ApplicationServices/ApplicationServices.h>
+#include <IOBluetooth/IOBluetooth.h>
 #include "FFKeyLibrary.h"
 #include "FFPreferenceManager.h"
 #import "DDHidLib.h"
@@ -124,6 +125,7 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 	return ev;
 }
 
+static IOBluetoothUserNotificationRef connectionNotification;
 
 @implementation FFHelperApp
 
@@ -182,14 +184,14 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 	// Preference pane sends this notification to tell us to die
 	[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(terminate) name:FF_TERMINATE_NOTIFICATION object:nil];
 	
-	USBNotifier_init(self);
-	
 	[self listenForHIDEvents];
 	[self listenForKeyEvents];
-	
+
+    [self listenForHardwareChanges];
 }
 
 - (void)listenForHIDEvents {
+//    NSLog(@"listing keyboard");
 	
 	// release queues first, or suffer!
 	self.queues = nil;
@@ -200,6 +202,7 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 	
 	DDHidQueue *queue;
 	for(DDHidKeyboard *keyboard in [DDHidKeyboard allKeyboards]) {
+//        NSLog(@"found keyboard %@", keyboard);
 		[self.devices addObject:keyboard];
 		[keyboard open];
 		queue = [keyboard createQueueWithSize:10];
@@ -210,10 +213,35 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 	}
 }
 
+- (void)dealloc {
+    IOBluetoothUserNotificationUnregister(connectionNotification);
+    [super dealloc];
+}
+
+#pragma mark -
+#pragma mark keyboard changes
+
 - (void)keyboardListChanged {
 	// give the keyboard a moment to be recognized, then start listening
 	[self performSelector:@selector(listenForHIDEvents) withObject:nil afterDelay:2.0];
 }
+
+static void bluetoothDisconnection(void *userRefCon, IOBluetoothUserNotificationRef inRef, IOBluetoothObjectRef objectRef) {
+    [(FFHelperApp *)userRefCon keyboardListChanged];
+    IOBluetoothUserNotificationUnregister(inRef);
+}
+
+static void bluetoothConnection(void *userRefCon, IOBluetoothUserNotificationRef inRef, IOBluetoothObjectRef objectRef) {
+    #pragma unused(status,inRef)
+    [(FFHelperApp *)userRefCon keyboardListChanged];
+    IOBluetoothDeviceRegisterForDisconnectNotification(objectRef, bluetoothDisconnection, userRefCon);
+}
+- (void)listenForHardwareChanges {
+    USBNotifier_init(self);
+    connectionNotification = IOBluetoothRegisterForDeviceConnectNotifications(bluetoothConnection, self);
+}
+
+#pragma mark -
 
 - (void) ddhidQueueHasEvents: (DDHidQueue *) hidQueue
 {

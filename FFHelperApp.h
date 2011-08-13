@@ -35,6 +35,7 @@
 
 - (void)listenForKeyEvents;
 - (void)listenForHIDEvents;
+- (void)listenForHardwareChanges;
 - (void)keyboardListChanged;
 - (void)terminate;
 

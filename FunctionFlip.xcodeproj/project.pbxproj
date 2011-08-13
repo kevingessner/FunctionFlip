@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFD893913F72FFC00B6F8DE /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */; };
+		0AFD894513F7300C00B6F8DE /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -105,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = System/Library/Frameworks/IOBluetooth.framework; sourceTree = SDKROOT; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -185,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AFD894513F7300C00B6F8DE /* IOBluetooth.framework in Frameworks */,
 				BC7ACA8F10702F90000943BD /* IOKit.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				BC8D67B60E04C93700E866A8 /* ApplicationServices.framework in Frameworks */,
@@ -199,6 +203,7 @@
 				BC423EBD0E749FDD00C812C7 /* ApplicationServices.framework in Frameworks */,
 				BC18C1850E6DC21900F11272 /* PreferencePanes.framework in Frameworks */,
 				BC7ACA7E10702D42000943BD /* IOKit.framework in Frameworks */,
+				0AFD893913F72FFC00B6F8DE /* IOBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +230,7 @@
 				BC18C1840E6DC21900F11272 /* PreferencePanes.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				BC7ACA7D10702D42000943BD /* IOKit.framework */,
+				0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
