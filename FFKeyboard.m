@@ -28,6 +28,7 @@
 #import "FFKeyboard.h"
 #import "FFPreferenceManager.h"
 #import "FFKey.h"
+#import "FFKeyLibrary.h"
 #import "DDHidLib.h"
 
 @implementation FFKeyboard
@@ -87,6 +88,7 @@ static NSMutableDictionary *keyboards;
 	if(![self hasSpecialFkeys]) return NSNotApplicableMarker;
 	NSMutableArray *keys = [NSMutableArray array];
 	for(NSString *keyId in [[fkeyMap allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
+		if (![FFKeyLibrary descriptionForSpecialId:[self specialIdForKeyId:keyId]]) continue;
 		[keys addObject:[FFKey keyWithKeyId:keyId ofKeyboard:self]];
 	}
 	return keys;
