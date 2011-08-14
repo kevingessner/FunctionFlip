@@ -94,7 +94,11 @@ static NSDictionary *keyDescriptions, *keyCodes, *specialCodes;
  Some keys (expose, dashboard) come in as regular keys but act like special
  */
 + (BOOL)isRegularKeyLikeSpecialKey:(int)keyCode {
-	return (KG_EXPOSE_KEY == keyCode || KG_DASHBOARD_KEY == keyCode || KG_BRIGHTNESS_DOWN_KEY == keyCode || KG_BRIGHTNESS_UP_KEY == keyCode);
+	return (KG_EXPOSE_KEY == keyCode
+            || KG_DASHBOARD_KEY == keyCode
+            || KG_LAUNCHPAD_KEY == keyCode
+            || KG_BRIGHTNESS_DOWN_KEY == keyCode
+            || KG_BRIGHTNESS_UP_KEY == keyCode);
 }
 
 + (NSString *)descriptionForSpecialKey:(NSNumber *)key {
