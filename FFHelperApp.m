@@ -232,7 +232,7 @@ static void bluetoothDisconnection(void *userRefCon, IOBluetoothUserNotification
 }
 
 static void bluetoothConnection(void *userRefCon, IOBluetoothUserNotificationRef inRef, IOBluetoothObjectRef objectRef) {
-    #pragma unused(status,inRef)
+    #pragma unused(inRef)
     [(FFHelperApp *)userRefCon keyboardListChanged];
     IOBluetoothDeviceRegisterForDisconnectNotification(objectRef, bluetoothDisconnection, userRefCon);
 }
@@ -253,7 +253,7 @@ static void bluetoothConnection(void *userRefCon, IOBluetoothUserNotificationRef
 	
     DDHidEvent * hidEvent;
 	FFHIDEvent *event;
-	while (hidEvent = [hidQueue nextEvent])
+	while ((hidEvent = [hidQueue nextEvent]))
     {
 		event = [FFHIDEvent eventWithDDHidEvent:hidEvent fromKeyboard:[FFKeyboard keyboardWithDevice:device]];
 		if([event isFkeyEvent] && [hidEvent value] == FF_KEY_DOWN) { // only grab the down-stroke of fkeys
