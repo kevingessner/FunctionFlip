@@ -42,13 +42,13 @@ static FFPreferenceManager *sharedInstance = nil;
 	CFPreferencesAppSynchronize((CFStringRef)FF_PREFPANE_BUNDLE_IDENTIFIER);
 	id value = (id)CFPreferencesCopyAppValue((CFStringRef)key,
         (CFStringRef)FF_PREFPANE_BUNDLE_IDENTIFIER);
-//	NSLog(@"ffprefmanager get: %@, %@", key, value);
+//	NSLog(@"ffprefmanager (%@) get: %@, %@", self, key, value);
 	return [value autorelease];
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {
 	[self willChangeValueForKey:key];
-//	NSLog(@"ffprefmanager set: %@, %@", key, value);
+//	NSLog(@"ffprefmanager (%@) set: %@, %@", self, key, value);
 	CFPreferencesSetAppValue((CFStringRef)key, (CFPropertyListRef)value, (CFStringRef)FF_PREFPANE_BUNDLE_IDENTIFIER);
 	CFPreferencesAppSynchronize((CFStringRef)FF_PREFPANE_BUNDLE_IDENTIFIER);
 	[self didChangeValueForKey:key];

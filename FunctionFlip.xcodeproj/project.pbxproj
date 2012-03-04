@@ -52,7 +52,6 @@
 		BC37777D0E747396009142EC /* FFKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37777C0E747396009142EC /* FFKey.m */; };
 		BC37777E0E747396009142EC /* FFKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC37777C0E747396009142EC /* FFKey.m */; };
 		BC3AA3610E4F4A2B007216B1 /* NSString+numericCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3AA3600E4F4A2B007216B1 /* NSString+numericCompare.m */; };
-		BC423EB20E749F7700C812C7 /* KGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7EA5090E522910005C0FF0 /* KGLoginController.m */; };
 		BC423EBD0E749FDD00C812C7 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D67B50E04C93700E866A8 /* ApplicationServices.framework */; };
 		BC423ECB0E74A02900C812C7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BC5F4A820E744F8200C572AB /* NSString+numericCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3AA3600E4F4A2B007216B1 /* NSString+numericCompare.m */; };
@@ -162,8 +161,6 @@
 		BC3AA3600E4F4A2B007216B1 /* NSString+numericCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+numericCompare.m"; sourceTree = "<group>"; };
 		BC6DE5040E212EAA0000599F /* FunctionFlip.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = FunctionFlip.icns; sourceTree = "<group>"; };
 		BC7ACA7D10702D42000943BD /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
-		BC7EA5080E522910005C0FF0 /* KGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLoginController.h; sourceTree = "<group>"; };
-		BC7EA5090E522910005C0FF0 /* KGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLoginController.m; sourceTree = "<group>"; };
 		BC8D67B50E04C93700E866A8 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		BC8D67BE0E04C9B000E866A8 /* FFHelperApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFHelperApp.h; sourceTree = "<group>"; };
 		BC8D67BF0E04C9B000E866A8 /* FFHelperApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFHelperApp.m; sourceTree = "<group>"; };
@@ -362,8 +359,6 @@
 				BCB4A3110E743D3C00EC2AA9 /* FFPreferenceManager.m */,
 				BC18C18E0E6DC26000F11272 /* FFPrefPaneController.h */,
 				BC18C18F0E6DC26000F11272 /* FFPrefPaneController.m */,
-				BC7EA5080E522910005C0FF0 /* KGLoginController.h */,
-				BC7EA5090E522910005C0FF0 /* KGLoginController.m */,
 				BC37777B0E747396009142EC /* FFKey.h */,
 				BC37777C0E747396009142EC /* FFKey.m */,
 			);
@@ -526,7 +521,6 @@
 				BC0BB5871070220B00CFDE9C /* NSDictionary+DDHidExtras.m in Sources */,
 				BC5F4A820E744F8200C572AB /* NSString+numericCompare.m in Sources */,
 				BCF7778A0E6F1B24004AEC05 /* NSDictionary+firstKeyForObject.m in Sources */,
-				BC423EB20E749F7700C812C7 /* KGLoginController.m in Sources */,
 				BCF776D40E6EF386004AEC05 /* FFKeyLibrary.m in Sources */,
 				BC18C1900E6DC26000F11272 /* FFPrefPaneController.m in Sources */,
 				BCB4A3130E743D3C00EC2AA9 /* FFPreferenceManager.m in Sources */,

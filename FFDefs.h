@@ -93,4 +93,6 @@
 #define FF_TERMINATE_NOTIFICATION @"Momento mori"
 #define FF_UPDATE_URL @"http://kevingessner.com/update/functionflip"
 
+#define KG_LOGIN_KEYPATH @"startAtLogin"
+
 #endif // !FF_DEFS
