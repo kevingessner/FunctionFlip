@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFA85B31503E7B300D30F6A /* FFHelperApp.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* FFHelperApp.app */; };
 		0AFD893913F72FFC00B6F8DE /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */; };
 		0AFD894513F7300C00B6F8DE /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -56,7 +57,6 @@
 		BC423ECB0E74A02900C812C7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BC5F4A820E744F8200C572AB /* NSString+numericCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3AA3600E4F4A2B007216B1 /* NSString+numericCompare.m */; };
 		BC6DE5050E212EAA0000599F /* FunctionFlip.icns in Resources */ = {isa = PBXBuildFile; fileRef = BC6DE5040E212EAA0000599F /* FunctionFlip.icns */; };
-		BC6E5B740E79CBFE009A5E96 /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = BC7EA5240E522B1F005C0FF0 /* LoginItemsAE.c */; };
 		BC7ACA7E10702D42000943BD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7ACA7D10702D42000943BD /* IOKit.framework */; };
 		BC7ACA8F10702F90000943BD /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7ACA7D10702D42000943BD /* IOKit.framework */; };
 		BC8D67B60E04C93700E866A8 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8D67B50E04C93700E866A8 /* ApplicationServices.framework */; };
@@ -66,7 +66,6 @@
 		BCE58CAA0EFB0C82001C0F7A /* USBNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE58CA90EFB0C82001C0F7A /* USBNotifier.m */; };
 		BCF687600E79850600DEA9CD /* FFHelperAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF6875F0E79850600DEA9CD /* FFHelperAppController.m */; };
 		BCF688020E798BFA00DEA9CD /* FFKeyLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF776D30E6EF386004AEC05 /* FFKeyLibrary.m */; };
-		BCF688D70E79914600DEA9CD /* FFHelperApp.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* FFHelperApp.app */; };
 		BCF776D40E6EF386004AEC05 /* FFKeyLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF776D30E6EF386004AEC05 /* FFKeyLibrary.m */; };
 		BCF7778A0E6F1B24004AEC05 /* NSDictionary+firstKeyForObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23BD080E0993C100B32D10 /* NSDictionary+firstKeyForObject.m */; };
 		BCFBBCD30EB7569A00212F90 /* FFUpdateSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFBBCD20EB7569A00212F90 /* FFUpdateSheetController.m */; };
@@ -165,8 +164,6 @@
 		BC7ACA7D10702D42000943BD /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		BC7EA5080E522910005C0FF0 /* KGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGLoginController.h; sourceTree = "<group>"; };
 		BC7EA5090E522910005C0FF0 /* KGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGLoginController.m; sourceTree = "<group>"; };
-		BC7EA5240E522B1F005C0FF0 /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
-		BC7EA5250E522B1F005C0FF0 /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
 		BC8D67B50E04C93700E866A8 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		BC8D67BE0E04C9B000E866A8 /* FFHelperApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFHelperApp.h; sourceTree = "<group>"; };
 		BC8D67BF0E04C9B000E866A8 /* FFHelperApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFHelperApp.m; sourceTree = "<group>"; };
@@ -272,8 +269,6 @@
 			children = (
 				BC0BB52A1070213200CFDE9C /* DDHidLib */,
 				BCF776CE0E6EF0DB004AEC05 /* FFDefs.h */,
-				BC7EA5240E522B1F005C0FF0 /* LoginItemsAE.c */,
-				BC7EA5250E522B1F005C0FF0 /* LoginItemsAE.h */,
 				32CA4F630368D1EE00C91783 /* FunctionFlip_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -475,7 +470,7 @@
 			files = (
 				BC18C1DB0E6DDEEB00F11272 /* FunctionFlip.icns in Resources */,
 				BC18C1960E6DC68000F11272 /* FFPrefPane.nib in Resources */,
-				BCF688D70E79914600DEA9CD /* FFHelperApp.app in Resources */,
+				0AFA85B31503E7B300D30F6A /* FFHelperApp.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +532,6 @@
 				BCB4A3130E743D3C00EC2AA9 /* FFPreferenceManager.m in Sources */,
 				BC37777E0E747396009142EC /* FFKey.m in Sources */,
 				BCF687600E79850600DEA9CD /* FFHelperAppController.m in Sources */,
-				BC6E5B740E79CBFE009A5E96 /* LoginItemsAE.c in Sources */,
 				BC2BA06D0EB69243003CC968 /* FFKeyboard.m in Sources */,
 				BCFBBCD30EB7569A00212F90 /* FFUpdateSheetController.m in Sources */,
 			);

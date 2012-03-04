@@ -27,7 +27,6 @@
 
 #import "KGLoginController.h"
 
-#include "LoginItemsAE.h"
 #include "FFPreferenceManager.h"
 #include "FFHelperAppController.h"
 
@@ -49,38 +48,64 @@
 	}
 }
 
-- (void)setStartsAtLogin:(BOOL)flag {
-	OSStatus status;
-	CFArrayRef loginItems = NULL;
-	NSURL *url = [NSURL fileURLWithPath:[FFHelperAppController pathToHelperApp]];
-	int existingLoginItemIndex = -1;
-
-	status = LIAECopyLoginItems(&loginItems);
-
-	if (status == noErr) {
-		NSEnumerator *enumerator = [(NSArray *)loginItems objectEnumerator];
-		NSDictionary *loginItemDict;
-
-		while ((loginItemDict = [enumerator nextObject])) {
-			if ([[loginItemDict objectForKey:(NSString *)kLIAEURL] isEqual:url]) {
-				existingLoginItemIndex = [(NSArray *)loginItems indexOfObjectIdenticalTo:loginItemDict];
-				break;
-			}
-		}
-	}
-	
-	if (flag && (existingLoginItemIndex == -1))
-		LIAEAddURLAtEnd((CFURLRef)url, false);
-	else if (!flag && (existingLoginItemIndex != -1))
-		LIAERemove(existingLoginItemIndex);
-
-	if(loginItems)
-		CFRelease(loginItems);
-}
-
 - (BOOL)startsAtLogin {
 	return [[[FFPreferenceManager sharedInstance] valueForKey:KG_LOGIN_KEYPATH] boolValue];
 }
 
+-(void) addAppAsLoginItem:(NSString *)appPath {
+	// This will retrieve the path for the application
+	// For example, /Applications/test.app
+	CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:appPath];
+
+	// Create a reference to the shared file list.
+    // We are adding it to the current user only.
+    // If we want to add it all users, use
+    // kLSSharedFileListGlobalLoginItems instead of
+    //kLSSharedFileListSessionLoginItems
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL,
+                                                            kLSSharedFileListSessionLoginItems, NULL);
+	if (loginItems) {
+		//Insert an item to the list.
+		LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems,
+                                                                     kLSSharedFileListItemLast, NULL, NULL,
+                                                                     url, NULL, NULL);
+		if (item){
+			CFRelease(item);
+        }
+	}
+	CFRelease(loginItems);
+}
+
+-(void) deleteAppFromLoginItem:(NSString *)appPath {
+	CFURLRef url;
+
+	// Create a reference to the shared file list.
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+
+	if (loginItems) {
+		UInt32 seedValue;
+		NSArray *loginItemsArray = (NSArray *)LSSharedFileListCopySnapshot(loginItems, &seedValue);
+		for(id itemRef in loginItemsArray) {
+            //Resolve the item with URL
+			if (LSSharedFileListItemResolve((LSSharedFileListItemRef)itemRef, 0, &url, NULL) == noErr) {
+				NSString * urlPath = [(NSURL*)url path];
+				if ([urlPath isEqualToString:appPath]){
+					LSSharedFileListItemRemove(loginItems, (LSSharedFileListItemRef)itemRef);
+				}
+			}
+		}
+		[loginItemsArray release];
+	}
+}
+
+
+- (void)setStartsAtLogin:(BOOL)flag {
+    NSString *appPath = [FFHelperAppController pathToHelperApp];
+    if (flag) {
+        [self addAppAsLoginItem:appPath];
+    } else {
+        [self deleteAppFromLoginItem:appPath];
+    }
+}
 
 @end
