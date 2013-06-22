@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AFA85B31503E7B300D30F6A /* FFHelperApp.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* FFHelperApp.app */; };
+		0AFA85B31503E7B300D30F6A /* FunctionFlip.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* FunctionFlip.app */; };
 		0AFD893913F72FFC00B6F8DE /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */; };
 		0AFD894513F7300C00B6F8DE /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AFD893813F72FFC00B6F8DE /* IOBluetooth.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -114,7 +114,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* FunctionFlip_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionFlip_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* FFHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFHelperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* FunctionFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunctionFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC08645A0EB0E07100ED0276 /* FFHIDEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFHIDEvent.h; sourceTree = "<group>"; };
 		BC08645B0EB0E07100ED0276 /* FFHIDEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFHIDEvent.m; sourceTree = "<group>"; };
 		BC0BB52B1070213200CFDE9C /* DDHidAppleRemote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHidAppleRemote.h; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* FFHelperApp.app */,
+				8D1107320486CEB800E47090 /* FunctionFlip.app */,
 				BC18C17E0E6DC17A00F11272 /* FunctionFlip.prefPane */,
 			);
 			name = Products;
@@ -397,7 +397,7 @@
 			name = FFHelperApp;
 			productInstallPath = "$(HOME)/Applications";
 			productName = FunctionFlip;
-			productReference = 8D1107320486CEB800E47090 /* FFHelperApp.app */;
+			productReference = 8D1107320486CEB800E47090 /* FunctionFlip.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BC18C17D0E6DC17A00F11272 /* FunctionFlip */ = {
@@ -465,7 +465,7 @@
 			files = (
 				BC18C1DB0E6DDEEB00F11272 /* FunctionFlip.icns in Resources */,
 				BC18C1960E6DC68000F11272 /* FFPrefPane.nib in Resources */,
-				0AFA85B31503E7B300D30F6A /* FFHelperApp.app in Resources */,
+				0AFA85B31503E7B300D30F6A /* FunctionFlip.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,15 +584,16 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "FFPrefPane-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					AppKit,
 				);
-				PRODUCT_NAME = FFPrefPane;
-				SDKROOT = macosx10.6;
-				WRAPPER_EXTENSION = bundle;
+				PRODUCT_NAME = FunctionFlip;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = prefPane;
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -600,7 +601,7 @@
 		BC18C1810E6DC17B00F11272 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -622,7 +623,7 @@
 					AppKit,
 				);
 				PRODUCT_NAME = FunctionFlip;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = prefPane;
 				ZERO_LINK = NO;
 			};
@@ -643,8 +644,9 @@
 				GCC_PREFIX_HEADER = FunctionFlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = FunctionFlip;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -664,8 +666,9 @@
 				GCC_PREFIX_HEADER = FunctionFlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = FFHelperApp;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PRODUCT_NAME = FunctionFlip;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -676,7 +679,7 @@
 			buildSettings = {
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -686,7 +689,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

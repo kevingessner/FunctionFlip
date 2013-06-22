@@ -25,6 +25,7 @@
 //  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "FFDefs.h"
 #import "FFHelperAppController.h"
 
 @implementation FFHelperAppController
@@ -46,11 +47,11 @@
 }
 
 + (NSString *)pathToHelperApp {
-	return [[NSBundle bundleWithIdentifier:FF_PREFPANE_BUNDLE_IDENTIFIER] pathForResource:@"FFHelperApp" ofType:@"app"];
+	return [[NSBundle bundleWithIdentifier:FF_PREFPANE_BUNDLE_IDENTIFIER] pathForResource:@"FunctionFlip" ofType:@"app"];
 }
 
 + (void) launchHelperApp {
-//	NSLog(@"starting %@", [FFHelperAppController pathToHelperApp]);
+	NSLog(@"starting %@", [FFHelperAppController pathToHelperApp]);
 	NSURL *helperAppURL = [NSURL fileURLWithPath:[FFHelperAppController pathToHelperApp]];
 
 	unsigned options = NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync;
