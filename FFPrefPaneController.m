@@ -64,8 +64,6 @@
 	[FFHelperAppController startStopHelperApp];
 	[helperAppProgress startAnimation:self];
 	[startStopHelperApp setEnabled:NO];
-	// give the app a moment to start, then check if it's running.
-	[self performSelector:@selector(updateHelperAppStatus) withObject:nil afterDelay:3.0];
 }
 
 - (void)restartHelperApp {
@@ -73,8 +71,6 @@
 	[helperAppStatus setStringValue:@"Upgrading FunctionFlip..."];
 	[helperAppProgress startAnimation:self];
 	[startStopHelperApp setEnabled:NO];
-	// give the app a moment to start, then check if it's running.
-	[self performSelector:@selector(updateHelperAppStatus) withObject:nil afterDelay:4.0];
 }
 
 
@@ -88,6 +84,8 @@
 	}
 	[startStopHelperApp setEnabled:YES];
 	[helperAppProgress stopAnimation:self];
+
+	[self performSelector:@selector(updateHelperAppStatus) withObject:nil afterDelay:5.0];
 }
 
 - (FFPreferenceManager *)ffPreferenceManager {
