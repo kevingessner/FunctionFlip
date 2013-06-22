@@ -133,6 +133,21 @@ static IOBluetoothUserNotificationRef connectionNotification;
 	hidEventQueue = [[NSMutableArray array] retain];
 }
 
+/*!
+ From 10.9's AXUIElement.h in ApplicationServices.framework:
+
+ @function AXIsProcessTrustedWithOptions
+ @abstract Returns whether the current process is a trusted accessibility client.
+ @param options A dictionary of options, or NULL to specify no options. The following options are available:
+ 
+ KEY: kAXTrustedCheckOptionPrompt
+ VALUE: ACFBooleanRef indicating whether the user will be informed if the current process is untrusted. This could be used, for example, on application startup to always warn a user if accessibility is not enabled for the current process. Prompting occurs asynchronously and does not affect the return value.
+ 
+ @result Returns TRUE if the current process is a trusted accessibility client, FALSE if it is not.
+ */
+extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
+extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
+
 - (void)listenForKeyEvents
 {
   CFMachPortRef      eventTapTest;
@@ -141,24 +156,44 @@ static IOBluetoothUserNotificationRef connectionNotification;
 
   // Create an event tap. We are interested in key presses and system defined keys.  
   eventMask = ((1 << kCGEventKeyDown) | (1 << kCGEventKeyUp));
-  
-  // try creating an event tap just for keypresses. if it fails, we need Universal Access.
-  eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
-			      eventMask, myCGEventCallback, NULL);
-  if (!eventTapTest) {
-	NSLog(@"no tap");
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"Quit"];
-	[alert setMessageText:@"FunctionFlip could not create an event tap."];
-	[alert setInformativeText:@"Please enable \"access for assistive devices\" in the Universal Access pane of System Preferences."];
-	[alert setAlertStyle:NSCriticalAlertStyle];
-	[alert runModal];
-	[NSApp terminate:self];
-	return;
+
+  if (AXIsProcessTrustedWithOptions != NULL) {
+      // 10.9 or higher
+      NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanFalse, kAXTrustedCheckOptionPrompt, nil];
+      eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
+                                      eventMask, myCGEventCallback, NULL);
+      if (!AXIsProcessTrustedWithOptions((CFDictionaryRef)options) || !eventTapTest) {
+          NSLog(@"no trust, no tap");
+          NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+          [alert addButtonWithTitle:@"Open Security & Privacy Preferences"];
+          [alert setMessageText:@"FunctionFlip needs your permission to run"];
+          [alert setInformativeText:@"Enable FunctionFlip in Security & Privacy preferences -> Privacy -> Accessibility, in System Preferences.  Then restart FunctionFlip."];
+          [alert setAlertStyle:NSCriticalAlertStyle];
+          [alert runModal];
+          [[NSWorkspace sharedWorkspace] openFile:@"/System/Library/PreferencePanes/Security.prefPane"];
+          [NSApp terminate:self];
+          return;
+      }
+  } else {
+      // 10.8 or before
+      // try creating an event tap just for keypresses. if it fails, we need Universal Access.
+      eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
+                      eventMask, myCGEventCallback, NULL);
+    if (!eventTapTest) {
+        NSLog(@"no tap");
+        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+        [alert addButtonWithTitle:@"Quit"];
+        [alert setMessageText:@"FunctionFlip could not create an event tap."];
+        [alert setInformativeText:@"Please enable \"access for assistive devices\" in the Universal Access pane of System Preferences."];
+        [alert setAlertStyle:NSCriticalAlertStyle];
+        [alert runModal];
+        [NSApp terminate:self];
+        return;
+    }
   }
   // disable the test tap
   // causes a crash otherwise (infinite loop with the replacement events, probably)
-  CGEventTapEnable(eventTapTest, false);
+  if (eventTapTest) CGEventTapEnable(eventTapTest, false);
   
   eventTap = CGEventTapCreate(kCGSessionEventTap, kCGHeadInsertEventTap, 0,
 				  CGEventMaskBit(NX_SYSDEFINED) | eventMask, myCGEventCallback, NULL);
