@@ -49,6 +49,7 @@
 	if(!lastVersion || ![lastVersion isEqualToString:[self bundleVersionNumber]]) {
 		[self restartHelperApp];
 		[[FFPreferenceManager sharedInstance] setValue:[self bundleVersionNumber] forKey:@"version"];
+        [self performSelector:@selector(updateHelperAppStatus) withObject:nil afterDelay:3.0];
 	} else {
 		[self performSelector:@selector(updateHelperAppStatus) withObject:nil afterDelay:0.1];
 	}
