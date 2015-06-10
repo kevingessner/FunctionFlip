@@ -43,6 +43,12 @@
     return self;
 }
 
+- (void) dealloc;
+{
+    free(mEvent.longValue);
+    [super dealloc];
+}
+
 - (IOHIDElementType) type;
 {
     return mEvent.type;
