@@ -39,7 +39,7 @@
 - (void)keyboardListChanged;
 - (void)terminate;
 
-@property (retain) NSMutableArray *devices;
-@property (retain) NSMutableArray *queues;
+@property (strong) NSMutableArray *devices;
+@property (strong) NSMutableArray *queues;
 
 @end

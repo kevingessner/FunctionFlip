@@ -82,12 +82,9 @@
 - (void) dealloc
 {
     [self invalidateBarcodeInputTimer];
-    [mKeyElements release];
-    [mAccumulatedDigits release];
     
     mKeyElements = nil;
     mAccumulatedDigits = nil;
-    [super dealloc];
 }
 
 #pragma mark -
@@ -193,7 +190,7 @@
     }
     
     if (!mBarcodeInputTimer) // schedule a timer to make sure we get the rest of the digits in a timely manner
-        mBarcodeInputTimer = [[NSTimer scheduledTimerWithTimeInterval:BARCODE_INPUT_TIMEOUT target:self selector:@selector(fireBarcodeInputTimeout:) userInfo:nil repeats:NO] retain];
+        mBarcodeInputTimer = [NSTimer scheduledTimerWithTimeInterval:BARCODE_INPUT_TIMEOUT target:self selector:@selector(fireBarcodeInputTimeout:) userInfo:nil repeats:NO];
     
     [mAccumulatedDigits appendString:[NSString stringWithFormat:@"%d", (usageId + 1) % 10]];
 }
@@ -201,7 +198,7 @@
 - (void) fireBarcodeInputTimeout: (NSTimer *) timer;
 {
     if ([mAccumulatedDigits length] >= UPC_A_BARCODE_LENGTH)
-        [self ddhidKeyboardBarcodeScanner: self gotBarcode: [[mAccumulatedDigits copy] autorelease]];
+        [self ddhidKeyboardBarcodeScanner: self gotBarcode: [mAccumulatedDigits copy]];
     [self clearAccumulatedInput];
 }
 
@@ -215,7 +212,6 @@
 - (void) invalidateBarcodeInputTimer;
 {
     [mBarcodeInputTimer invalidate];
-    [mBarcodeInputTimer release];
     mBarcodeInputTimer = nil;
 }
 

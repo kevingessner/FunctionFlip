@@ -42,7 +42,7 @@ static void usbDeviceAdded(void *refCon, io_iterator_t iterator) {
 			}
 
 			// NSLog(@"USB Device Attached: %@" , deviceName);
-			[(FFHelperApp *)refCon keyboardListChanged];
+			[(__bridge FFHelperApp *)refCon keyboardListChanged];
 			CFRelease(deviceName);
 		}
 
@@ -70,7 +70,7 @@ static void usbDeviceRemoved(void *refCon, io_iterator_t iterator) {
 			deviceName = CFCopyLocalizedString(CFSTR("USB 2.0 Bus"), "");
 
 		// NSLog(@"USB Device Detached: %@" , deviceName);
-		[(FFHelperApp *)refCon keyboardListChanged];
+		[(__bridge FFHelperApp *)refCon keyboardListChanged];
 		CFRelease(deviceName);
 
 		IOObjectRelease(thisObject);
@@ -138,7 +138,7 @@ void USBNotifier_init(FFHelperApp *delegate) {
 	CFRunLoopAddSource(CFRunLoopGetCurrent(),
 					   notificationRunLoopSource,
 					   kCFRunLoopDefaultMode);
-	registerForUSBNotifications((void *)delegate);
+	registerForUSBNotifications((__bridge void *)delegate);
 }
 
 void USBNotifier_dealloc(void) {

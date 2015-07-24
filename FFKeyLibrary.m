@@ -27,6 +27,7 @@
 
 #import "FFKeyLibrary.h"
 #include "NSDictionary+firstKeyForObject.h"
+#import "FFDefs.h"
 
 #define N(X) [NSNumber numberWithInt:X]
 

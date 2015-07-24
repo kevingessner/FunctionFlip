@@ -38,7 +38,7 @@
 
 + (FFKey *)keyWithKeyId:(NSString *)keyId ofKeyboard:(FFKeyboard *)keyboard; {
 	FFKey *key = [[FFKey alloc] initWithKeyId:(NSString *)keyId ofKeyboard:(FFKeyboard *)keyboard];
-	return [key autorelease];
+	return key;
 }
 
 - (id)initWithKeyId:(NSString *)_keyId ofKeyboard:(FFKeyboard *)_keyboard; {

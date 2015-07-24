@@ -78,10 +78,9 @@
 	ProcessSerialNumber PSN = { kNoProcess, kNoProcess };
 
 	while (GetNextProcess(&PSN) == noErr) {
-		NSDictionary *infoDict = (NSDictionary *)ProcessInformationCopyDictionary(&PSN, kProcessDictionaryIncludeAllInformationMask);
+		NSDictionary *infoDict = (NSDictionary *)CFBridgingRelease(ProcessInformationCopyDictionary(&PSN, kProcessDictionaryIncludeAllInformationMask));
 		NSString *bundleID = [infoDict objectForKey:(NSString *)kCFBundleIdentifierKey];
 		isRunning = bundleID && [bundleID isEqualToString:FF_HELPER_APP_BUNDLE_IDENTIFIER];
-		[infoDict release];
 
 		if (isRunning)
 			break;

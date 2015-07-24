@@ -78,16 +78,11 @@
 //=========================================================== 
 - (void) dealloc
 {
-    [mXElement release];
-    [mYElement release];
-    [mWheelElement release];
-    [mButtonElements release];
     
     mXElement = nil;
     mYElement = nil;
     mWheelElement = nil;
     mButtonElements = nil;
-    [super dealloc];
 }
 
 #pragma mark -
@@ -198,17 +193,17 @@
         if ((usagePage == kHIDPage_GenericDesktop) &&
             (usageId == kHIDUsage_GD_X))
         {
-            mXElement = [element retain];
+            mXElement = element;
         }
         else if ((usagePage == kHIDPage_GenericDesktop) &&
                  (usageId == kHIDUsage_GD_Y))
         {
-            mYElement = [element retain];
+            mYElement = element;
         }
         else if ((usagePage == kHIDPage_GenericDesktop) &&
                  (usageId == kHIDUsage_GD_Wheel))
         {
-            mWheelElement = [element retain];
+            mWheelElement = element;
         }
         else if ((usagePage == kHIDPage_Button) &&
                  (usageId > 0))
@@ -224,7 +219,7 @@
 - (void) ddhidQueueHasEvents: (DDHidQueue *) hidQueue;
 {
     DDHidEvent * event;
-    while (event = [hidQueue nextEvent])
+    while ((event = [hidQueue nextEvent]))
     {
         IOHIDElementCookie cookie = [event elementCookie];
         SInt32 value = [event value];

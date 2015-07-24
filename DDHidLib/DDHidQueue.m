@@ -49,7 +49,6 @@ static void queueCallbackFunction(void* target,  IOReturn result, void* refcon,
     IOReturn result = (*mQueue)->create(mQueue, 0, size);
     if (result != kIOReturnSuccess)
     {
-        [self release];
         return nil;
     }
      
@@ -61,7 +60,6 @@ static void queueCallbackFunction(void* target,  IOReturn result, void* refcon,
     [self stop];
     (*mQueue)->dispose(mQueue);
     (*mQueue)->Release(mQueue);
-    [super dealloc];
 }
 
 - (void) addElement: (DDHidElement *) element;
@@ -102,10 +100,10 @@ static void queueCallbackFunction(void* target,  IOReturn result, void* refcon,
     if (mStarted)
         return;
     
-    mRunLoop = [runLoop retain];
+    mRunLoop = runLoop;
     
     NSXThrowError((*mQueue)->createAsyncEventSource(mQueue, &mEventSource));
-    NSXThrowError((*mQueue)->setEventCallout(mQueue, queueCallbackFunction, self, NULL));
+    NSXThrowError((*mQueue)->setEventCallout(mQueue, queueCallbackFunction, (__bridge void *)self, NULL));
     CFRunLoopAddSource([mRunLoop getCFRunLoop], mEventSource,
                        kCFRunLoopDefaultMode);
     (*mQueue)->start(mQueue);
@@ -119,7 +117,6 @@ static void queueCallbackFunction(void* target,  IOReturn result, void* refcon,
     
     CFRunLoopRemoveSource([mRunLoop getCFRunLoop], mEventSource, kCFRunLoopDefaultMode);
     (*mQueue)->stop(mQueue);
-    [mRunLoop release];
     mRunLoop = nil;
     mStarted = NO;
 }
@@ -164,9 +161,9 @@ static void queueCallbackFunction(void* target,  IOReturn result, void* refcon,
 static void queueCallbackFunction(void* target,  IOReturn result, void* refcon,
                                   void* sender)
 {
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    DDHidQueue * queue = (DDHidQueue *) target;
-    [queue handleQueueCallback];
-    [pool release];
+    @autoreleasepool {
+        DDHidQueue * queue = (__bridge DDHidQueue *) target;
+        [queue handleQueueCallback];
+    }
     
 }

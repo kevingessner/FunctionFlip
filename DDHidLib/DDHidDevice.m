@@ -65,13 +65,11 @@
  
     if (![self initPropertiesWithError: error])
     {
-        [self release];
         return nil;
     }
     
     if (![self createDeviceInterfaceWithError: error])
     {
-        [self release];
         return nil;
     }
     
@@ -88,22 +86,15 @@
 //=========================================================== 
 - (void) dealloc
 {
-    [mDefaultQueue release];
     if (mDeviceInterface != NULL)
     {
         (*mDeviceInterface)->close(mDeviceInterface);
         (*mDeviceInterface)->Release(mDeviceInterface);
     }
-    [mElementsByCookie release];
-    [mElements release];
-    [mUsages release];
-    [mPrimaryUsage release];
-    [mProperties release];
     IOObjectRelease(mHidDevice);
     
     mProperties = nil;
     mDeviceInterface = NULL;
-    [super dealloc];
 }
 
 #pragma mark -
@@ -130,7 +121,7 @@
 	CFMutableDictionaryRef hidMatchDictionary =
         IOServiceMatching(kIOHIDDeviceKey);
     NSMutableDictionary * objcMatchDictionary =
-        (NSMutableDictionary *) hidMatchDictionary;
+        (__bridge NSMutableDictionary *) hidMatchDictionary;
     [objcMatchDictionary ddhid_setObject: [NSNumber numberWithUnsignedInt: usagePage]
                                forString: kIOHIDDeviceUsagePageKey];
     [objcMatchDictionary ddhid_setObject: [NSNumber numberWithUnsignedInt: usageId]
@@ -157,7 +148,7 @@
             return [NSArray array];
         
         io_object_t hidDevice;
-        while (hidDevice = IOIteratorNext(hidObjectIterator))
+        while ((hidDevice = IOIteratorNext(hidObjectIterator)))
         {
             [self addDevice: hidDevice
                   withClass: hidClass
@@ -220,8 +211,8 @@
     (*mDeviceInterface)->allocQueue(mDeviceInterface);
     if (queue == NULL)
         return nil;
-    return [[[DDHidQueue alloc] initWithHIDQueue: queue
-                                            size: size] autorelease];
+    return [[DDHidQueue alloc] initWithHIDQueue: queue
+                                            size: size];
 }
 
 - (long) getElementValue: (DDHidElement *) element;
@@ -258,7 +249,7 @@
     if (mListenInExclusiveMode)
         options = kIOHIDOptionsTypeSeizeDevice;
     [self openWithOptions: options];
-    mDefaultQueue = [[self createQueueWithSize: [self sizeOfDefaultQueue]] retain];
+    mDefaultQueue = [self createQueueWithSize: [self sizeOfDefaultQueue]];
     [mDefaultQueue setDelegate: self];
     [self addElementsToDefaultQueue];
     [mDefaultQueue startOnCurrentRunLoop];
@@ -270,7 +261,6 @@
         return;
     
     [mDefaultQueue stop];
-    [mDefaultQueue release];
     mDefaultQueue = nil;
     [self close];
 }
@@ -452,8 +442,7 @@
         {
             NSXRaiseError(error);
         }
-        [device autorelease];
-        
+
         if (([device locationId] == 0) && skipZeroLocations)
             return;
         
@@ -471,8 +460,7 @@
             {
                 NSXRaiseError(error);
             }
-            [device autorelease];
-            
+
             [devices addObject: device];
         }
     }
@@ -505,40 +493,38 @@
     CFMutableDictionaryRef properties;
     NSXReturnError(IORegistryEntryCreateCFProperties(mHidDevice, &properties,
                                                      kCFAllocatorDefault, kNilOptions));
-    if (error)
-        goto done;
-    
-    mProperties = (NSMutableDictionary *) properties;
-    NSArray * elementProperties = [mProperties ddhid_objectForString: kIOHIDElementKey];
-    mElements = [DDHidElement elementsWithPropertiesArray: elementProperties];
-    [mElements retain];
-    
-    unsigned usagePage = [mProperties ddhid_unsignedIntForString: kIOHIDPrimaryUsagePageKey];
-    unsigned usageId = [mProperties ddhid_unsignedIntForString: kIOHIDPrimaryUsageKey];
-    
-    mPrimaryUsage = [[DDHidUsage alloc] initWithUsagePage: usagePage
-                                                  usageId: usageId];
-    mUsages = [[NSMutableArray alloc] init];
-    
-    NSArray * usagePairs = [mProperties ddhid_objectForString: kIOHIDDeviceUsagePairsKey];
-    NSEnumerator * e = [usagePairs objectEnumerator];
-    NSDictionary * usagePair;
-    while (usagePair = [e nextObject])
-    {
-        usagePage = [usagePair ddhid_unsignedIntForString: kIOHIDDeviceUsagePageKey];
-        usageId = [usagePair ddhid_unsignedIntForString: kIOHIDDeviceUsageKey];
-        DDHidUsage * usage = [DDHidUsage usageWithUsagePage: usagePage
-                                                    usageId: usageId];
-        [mUsages addObject: usage];
+    if (!error) {
+
+        mProperties = (__bridge NSMutableDictionary *) properties;
+        NSArray * elementProperties = [mProperties ddhid_objectForString: kIOHIDElementKey];
+        mElements = [DDHidElement elementsWithPropertiesArray: elementProperties];
+        
+        unsigned usagePage = [mProperties ddhid_unsignedIntForString: kIOHIDPrimaryUsagePageKey];
+        unsigned usageId = [mProperties ddhid_unsignedIntForString: kIOHIDPrimaryUsageKey];
+        
+        mPrimaryUsage = [[DDHidUsage alloc] initWithUsagePage: usagePage
+                                                      usageId: usageId];
+        mUsages = [[NSMutableArray alloc] init];
+        
+        NSArray * usagePairs = [mProperties ddhid_objectForString: kIOHIDDeviceUsagePairsKey];
+        NSEnumerator * e = [usagePairs objectEnumerator];
+        NSDictionary * usagePair;
+        while (usagePair = [e nextObject])
+        {
+            usagePage = [usagePair ddhid_unsignedIntForString: kIOHIDDeviceUsagePageKey];
+            usageId = [usagePair ddhid_unsignedIntForString: kIOHIDDeviceUsageKey];
+            DDHidUsage * usage = [DDHidUsage usageWithUsagePage: usagePage
+                                                        usageId: usageId];
+            [mUsages addObject: usage];
+        }
+        
+        mElementsByCookie = [[NSMutableDictionary alloc] init];
+        [self indexElements: mElements];
+        result = YES;
     }
     
-    mElementsByCookie = [[NSMutableDictionary alloc] init];
-    [self indexElements: mElements];
-    result = YES;
-    
-done:
-        if (error_)
-            *error_ = error;
+    if (error_)
+        *error_ = error;
     return result;
 }
 

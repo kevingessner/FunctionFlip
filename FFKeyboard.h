@@ -43,7 +43,7 @@
 - (NSString *)specialIdForKeyId:(NSString *)keyId;
 - (NSArray *)fkeys;
 
-@property (retain) DDHidKeyboard *device;
+@property (strong) DDHidKeyboard *device;
 
 - (BOOL)isKeyFlipped:(FFKey *)key;
 - (void)setKey:(FFKey *)key isFlipped:(BOOL)flag;

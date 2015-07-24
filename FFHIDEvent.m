@@ -32,7 +32,7 @@
 @implementation FFHIDEvent
 
 + (FFHIDEvent *)eventWithDDHidEvent:(DDHidEvent *)event fromKeyboard:(FFKeyboard *)keyboard {
-	return [[[FFHIDEvent alloc] initWithDDHidEvent:event fromKeyboard:keyboard] autorelease];
+	return [[FFHIDEvent alloc] initWithDDHidEvent:event fromKeyboard:keyboard];
 }
 
 - (id)initWithDDHidEvent:(DDHidEvent *)_event fromKeyboard:(FFKeyboard *)_keyboard {

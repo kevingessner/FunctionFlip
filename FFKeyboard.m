@@ -39,11 +39,11 @@ static NSMutableDictionary *keyboards;
 + (FFKeyboard *)keyboardWithDevice:(DDHidKeyboard *)aDevice {
 	if(!keyboards) keyboards = [[NSMutableDictionary alloc] init];
 	if(![keyboards objectForKey:[aDevice productName]]) { // use product name since DDHidKeyboard's aren't copyable
-		FFKeyboard *keyboard = [[[FFKeyboard alloc] initWithDevice:aDevice] autorelease];
+		FFKeyboard *keyboard = [[FFKeyboard alloc] initWithDevice:aDevice];
 //		NSLog(@"kbFF: %@", keyboard);
-		[keyboards setObject:keyboard forKey:([aDevice productName] ? [aDevice productName] : [NSString stringWithFormat:@"%x-%x", [aDevice vendorId], [aDevice productId]])];
+		[keyboards setObject:keyboard forKey:([aDevice productName] ? [aDevice productName] : [NSString stringWithFormat:@"%lx-%lx", [aDevice vendorId], [aDevice productId]])];
 	}
-	return [keyboards objectForKey:([aDevice productName] ? [aDevice productName] : [NSString stringWithFormat:@"%x-%x", [aDevice vendorId], [aDevice productId]])];
+	return [keyboards objectForKey:([aDevice productName] ? [aDevice productName] : [NSString stringWithFormat:@"%lx-%lx", [aDevice vendorId], [aDevice productId]])];
 }
 
 - (id)initWithDevice:(DDHidKeyboard *)aDevice {
@@ -54,7 +54,7 @@ static NSMutableDictionary *keyboards;
 		// it's a comma-separated string of hex values: <first fkey code>,<first special code>,<second fkey code>,etc...
 		CFStringRef fnusagemap = IORegistryEntrySearchCFProperty([device ioDevice], kIOServicePlane, (CFStringRef)@"FnFunctionUsageMap", kCFAllocatorDefault, kIORegistryIterateRecursively);
 		if(fnusagemap) { // if we've got a non-special keyboard, this won't be set
-			NSArray *codes = [(NSString *)fnusagemap componentsSeparatedByString:@","];
+			NSArray *codes = [(__bridge NSString *)fnusagemap componentsSeparatedByString:@","];
 			NSMutableArray *fkeyCodes = [NSMutableArray array];
 			NSMutableArray *specialCodes = [NSMutableArray array];
 			NSInteger index = 0;
@@ -66,7 +66,7 @@ static NSMutableDictionary *keyboards;
 					[specialCodes addObject:code];
 				index++;
 			}
-			fkeyMap = [[NSDictionary dictionaryWithObjects:specialCodes forKeys:fkeyCodes] retain];
+			fkeyMap = [NSDictionary dictionaryWithObjects:specialCodes forKeys:fkeyCodes];
 		}
 	}
 	return self;

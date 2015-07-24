@@ -39,7 +39,6 @@ static DDHidUsageTables * sStandardUsageTables = nil;
             [NSDictionary dictionaryWithContentsOfFile: usageTablesPath];
         sStandardUsageTables =
             [[DDHidUsageTables alloc] initWithLookupTables: lookupTables];
-        [sStandardUsageTables retain];
     }
     
     return sStandardUsageTables;
@@ -51,7 +50,7 @@ static DDHidUsageTables * sStandardUsageTables = nil;
     if (self == nil)
         return nil;
     
-    mLookupTables = [lookupTables retain];
+    mLookupTables = lookupTables;
     
     return self;
 }

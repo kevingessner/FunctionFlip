@@ -133,14 +133,10 @@
 //=========================================================== 
 - (void) dealloc
 {
-    [mCookieToButtonMapping release];
-    [mButtonElements release];
-    [mIdElement release];
     
     mCookieToButtonMapping = nil;
     mButtonElements = nil;
     mIdElement = nil;
-    [super dealloc];
 }
 
 #pragma mark -
@@ -180,7 +176,7 @@
 {
     NSAssert([elements count] == 1, @"Assume only 1 top level remote element");
     DDHidElement * consumerControlsElement = [elements objectAtIndex: 0];
-    mButtonElements = [[consumerControlsElement elements] retain];
+    mButtonElements = [consumerControlsElement elements];
     DDHidElement * element;
     NSEnumerator * e = [mButtonElements objectEnumerator];
     while (element = [e nextObject])
@@ -188,7 +184,7 @@
         if ([[element usage] isEqualToUsagePage: 0x0006
                                         usageId: 0x0022])
         {
-            mIdElement = [element retain];
+            mIdElement = element;
         }
     }
 }
@@ -199,7 +195,7 @@
 	SInt32 sumOfValues = 0;
 
     DDHidEvent * event;
-    while (event = [hidQueue nextEvent])
+    while ((event = [hidQueue nextEvent]))
     {
         if ([event elementCookie] == [mIdElement cookie])
         {

@@ -82,7 +82,6 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 
 		FFHIDEvent *event = [hidEventQueue lastObject];
 		if(FF_KEY_UP == keyState) { // since we can get several keyDown key events per HID event, only remove the object on keyUp
-			[[event retain] autorelease]; // the event will be released it's removed, so prevent it from vanishing (not sure)
 			[hidEventQueue removeLastObject];
 		}
 		
@@ -99,7 +98,6 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 	} else if([e type] == NSKeyDown || [e type] == NSKeyUp) {
 		FFHIDEvent *event = [hidEventQueue lastObject];
 		if([e type] == NSKeyUp) { // since we can get several keyDown key events per HID event, only remove the object on keyUp
-			[[event retain] autorelease]; // the event will be released it's removed, so prevent it from vanishing (not sure)
 			[hidEventQueue removeLastObject];
 		}
 		
@@ -130,7 +128,7 @@ static IOBluetoothUserNotificationRef connectionNotification;
 @implementation FFHelperApp
 
 + (void)initialize {
-	hidEventQueue = [[NSMutableArray array] retain];
+	hidEventQueue = [NSMutableArray array];
 }
 
 /*!
@@ -162,9 +160,9 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
       NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanFalse, kAXTrustedCheckOptionPrompt, nil];
       eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
                                       eventMask, myCGEventCallback, NULL);
-      if (!AXIsProcessTrustedWithOptions((CFDictionaryRef)options) || !eventTapTest) {
+      if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options) || !eventTapTest) {
           NSLog(@"no trust, no tap");
-          NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+          NSAlert *alert = [[NSAlert alloc] init];
           [alert addButtonWithTitle:@"Open Security & Privacy Preferences"];
           [alert setMessageText:@"FunctionFlip needs your permission to run"];
           [alert setInformativeText:@"Enable FunctionFlip in Security & Privacy preferences -> Privacy -> Accessibility, in System Preferences.  Then restart FunctionFlip."];
@@ -181,7 +179,7 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
                       eventMask, myCGEventCallback, NULL);
     if (!eventTapTest) {
         NSLog(@"no tap");
-        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+        NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"Quit"];
         [alert setMessageText:@"FunctionFlip could not create an event tap."];
         [alert setInformativeText:@"Please enable \"access for assistive devices\" in the Universal Access pane of System Preferences."];
@@ -250,7 +248,6 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 
 - (void)dealloc {
     IOBluetoothUserNotificationUnregister(connectionNotification);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -262,18 +259,18 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 }
 
 static void bluetoothDisconnection(void *userRefCon, IOBluetoothUserNotificationRef inRef, IOBluetoothObjectRef objectRef) {
-    [(FFHelperApp *)userRefCon keyboardListChanged];
+    [(__bridge FFHelperApp *)userRefCon keyboardListChanged];
     IOBluetoothUserNotificationUnregister(inRef);
 }
 
 static void bluetoothConnection(void *userRefCon, IOBluetoothUserNotificationRef inRef, IOBluetoothObjectRef objectRef) {
     #pragma unused(inRef)
-    [(FFHelperApp *)userRefCon keyboardListChanged];
+    [(__bridge FFHelperApp *)userRefCon keyboardListChanged];
     IOBluetoothDeviceRegisterForDisconnectNotification(objectRef, bluetoothDisconnection, userRefCon);
 }
 - (void)listenForHardwareChanges {
     USBNotifier_init(self);
-    connectionNotification = IOBluetoothRegisterForDeviceConnectNotifications(bluetoothConnection, self);
+    connectionNotification = IOBluetoothRegisterForDeviceConnectNotifications(bluetoothConnection, (__bridge void *)(self));
 }
 
 #pragma mark -

@@ -31,7 +31,7 @@
 @interface FFKey : NSObject {
 
 	FFKeyboard *keyboard;
-	NSString *keyId;
+	NSString *__unsafe_unretained keyId;
 
 }
 
@@ -41,6 +41,6 @@
 - (BOOL)flipped;
 - (void)setFlipped:(BOOL)flipped;
 
-@property (readonly) NSString *keyId;
+@property (unsafe_unretained, readonly) NSString *keyId;
 
 @end
