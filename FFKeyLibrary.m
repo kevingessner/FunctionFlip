@@ -107,7 +107,7 @@ static NSDictionary *keyDescriptions, *keyCodes, *specialCodes;
 }
 
 + (NSString *)descriptionForSpecialId:(NSString *)specialId {
-	return [keyDescriptions objectForKey:[specialCodes objectForKey:specialId]];
+	return [keyDescriptions objectForKey:[specialCodes objectForKey:[specialId lowercaseString]]];
 }
 
 + (NSString *)keyIdForKeycode:(NSNumber *)keycode {
@@ -120,7 +120,7 @@ static NSDictionary *keyDescriptions, *keyCodes, *specialCodes;
 }
 
 + (NSNumber *)keycodeForSpecialId:(NSString *)specialId {
-	return [specialCodes objectForKey:specialId];
+	return [specialCodes objectForKey:[specialId lowercaseString]];
 }
 
 // keyCodes are sequential hex numbers from FF_F1_KEYID to FF_F12_KEYID

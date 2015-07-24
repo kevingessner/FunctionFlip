@@ -69,12 +69,12 @@
 #define FF_ILLUMINATION_DOWN_ID @"0x00ff0009"
 #define FF_ILLUMINATION_UP_ID @"0x00ff0008"
 #define FF_VIDEO_MIRROR_ID @"0x00ff0006"
-#define FF_REWIND_ID @"0x000C00B4"
-#define FF_PLAYPAUSE_ID @"0x000C00CD"
-#define FF_FASTFORWARD_ID @"0x000C00B3"
-#define FF_MUTE_ID @"0x000C00E2"
-#define FF_VOLUME_DOWN_ID @"0x000C00EA"
-#define FF_VOLUME_UP_ID @"0x000C00E9"
+#define FF_REWIND_ID @"0x000c00b4"
+#define FF_PLAYPAUSE_ID @"0x000c00cd"
+#define FF_FASTFORWARD_ID @"0x000c00b3"
+#define FF_MUTE_ID @"0x000c00e2"
+#define FF_VOLUME_DOWN_ID @"0x000c00ea"
+#define FF_VOLUME_UP_ID @"0x000c00e9"
 
 // from http://www.opensource.apple.com/source/IOHIDFamily/IOHIDFamily-368.13/IOHIDFamily/IOHIDKeyboard.cpp,
 // IOHIDKeyboard::defaultKeymapOfLength (grep for "dashboard")
