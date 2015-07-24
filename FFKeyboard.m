@@ -52,7 +52,7 @@ static NSMutableDictionary *keyboards;
 		
 		// extract the FN key map
 		// it's a comma-separated string of hex values: <first fkey code>,<first special code>,<second fkey code>,etc...
-		CFStringRef fnusagemap = IORegistryEntrySearchCFProperty([device ioDevice], kIOServicePlane, (CFStringRef)@"FnFunctionUsageMap", kCFAllocatorDefault, kIORegistryIterateRecursively);
+		CFStringRef fnusagemap = IORegistryEntrySearchCFProperty([self.device ioDevice], kIOServicePlane, (CFStringRef)@"FnFunctionUsageMap", kCFAllocatorDefault, kIORegistryIterateRecursively);
 		if(fnusagemap) { // if we've got a non-special keyboard, this won't be set
 			NSArray *codes = [(__bridge NSString *)fnusagemap componentsSeparatedByString:@","];
 			NSMutableArray *fkeyCodes = [NSMutableArray array];
@@ -95,12 +95,12 @@ static NSMutableDictionary *keyboards;
 }
 						 
 - (BOOL)isKeyFlipped:(FFKey *)key {
-//	NSLog(@"isflipped %@", key);
-	return [[[FFPreferenceManager sharedInstance] valueForKey:[NSString stringWithFormat:@"flipped.%@.%@", [device productName], [key keyId]]] boolValue];
+    NSString *lookupKey = [NSString stringWithFormat:@"flipped.%@.%@", [self.device productName], [key keyId]];
+	return [[[FFPreferenceManager sharedInstance] valueForKey:lookupKey] boolValue];
 }
 - (void)setKey:(FFKey *)key isFlipped:(BOOL)flag {
 //	NSLog(@"sets flipped %@", key);
-	[[FFPreferenceManager sharedInstance] setValue:[NSNumber numberWithBool:flag] forKey:[NSString stringWithFormat:@"flipped.%@.%@", [device productName], [key keyId]]];
+	[[FFPreferenceManager sharedInstance] setValue:[NSNumber numberWithBool:flag] forKey:[NSString stringWithFormat:@"flipped.%@.%@", [self.device productName], [key keyId]]];
 }
 
 - (NSString *)description {
