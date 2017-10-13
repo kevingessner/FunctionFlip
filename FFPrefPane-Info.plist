@@ -9,18 +9,18 @@
 	<key>CFBundleIconFile</key>
 	<string>FunctionFlip</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kevingessner.FunctionFlip</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>FunctionFlip</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.2.3</string>
 	<key>CFBundleSignature</key>
 	<string>KGKG</string>
 	<key>CFBundleVersion</key>
-	<string>2.2.3</string>
-	<key>CFBundleShortVersionString</key>
 	<string>2.2.3</string>
 	<key>NSMainNibFile</key>
 	<string>FFPrefPane</string>
