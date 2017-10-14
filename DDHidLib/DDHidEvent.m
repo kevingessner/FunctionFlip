@@ -46,7 +46,6 @@
 - (void) dealloc;
 {
     free(mEvent.longValue);
-    [super dealloc];
 }
 
 - (IOHIDElementType) type;
