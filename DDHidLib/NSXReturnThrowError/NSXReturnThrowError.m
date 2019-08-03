@@ -96,11 +96,11 @@ void NSXMakeErrorImp(const char *objCType_, intptr_t result_, const char *file_,
 	if (errorDomain) {
 		*error_ = [NSError errorWithDomain:errorDomain
 									  code:errorCode
-								  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSString stringWithUTF8String:file_],   @"reportingFile",
-									  [NSNumber numberWithInt:line_],   @"reportingLine",
-									  [NSString stringWithUTF8String:function_], @"reportingMethod",
-									  [NSString stringWithUTF8String:code_], @"origin",
-									  nil]];
+								  userInfo:@{
+											 @"reportingFile" : @(file_),
+											 @"reportingLine" : @(line_),
+											 @"reportingMethod" : @(function_),
+											 @"origin" : @(code_),
+											 }];
 	}
 }

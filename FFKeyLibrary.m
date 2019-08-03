@@ -29,66 +29,64 @@
 #include "NSDictionary+firstKeyForObject.h"
 #import "FFDefs.h"
 
-#define N(X) [NSNumber numberWithInt:X]
-
 static NSDictionary *keyDescriptions, *keyCodes, *specialCodes;
 
 @implementation FFKeyLibrary
 
 + (void)initialize {
-	keyDescriptions = [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Brightness Down", N(NX_KEYTYPE_BRIGHTNESS_DOWN),
-                       @"Brightness Up", N(NX_KEYTYPE_BRIGHTNESS_UP),
-                       @"Brightness Down", N(KG_BRIGHTNESS_DOWN_KEY),
-                       @"Brightness Up", N(KG_BRIGHTNESS_UP_KEY),
-                       @"Toggle Illumination", N(NX_KEYTYPE_ILLUMINATION_TOGGLE),
-                       @"Illumination Down", N(NX_KEYTYPE_ILLUMINATION_DOWN),
-                       @"Illumination Up", N(NX_KEYTYPE_ILLUMINATION_UP),
-                       @"Rewind", N(NX_KEYTYPE_REWIND),
-                       @"Play/Pause", N(NX_KEYTYPE_PLAY),
-                       @"Fast-Forward", N(NX_KEYTYPE_FAST),
-                       @"Mute", N(NX_KEYTYPE_MUTE),
-                       @"Volume Down", N(NX_KEYTYPE_SOUND_DOWN),
-                       @"Volume Up", N(NX_KEYTYPE_SOUND_UP),
-                       @"Mirror Displays", N(NX_KEYTYPE_VIDMIRROR),
-                       @"Exposé", N(KG_EXPOSE_KEY),
-                       @"Dashboard", N(KG_DASHBOARD_KEY),
-                       @"Launchpad", N(KG_LAUNCHPAD_KEY),
-                       nil];
+	keyDescriptions = @{
+						@(NX_KEYTYPE_BRIGHTNESS_DOWN) : @"Brightness Down",
+						@(NX_KEYTYPE_BRIGHTNESS_UP) : @"Brightness Up",
+						@(KG_BRIGHTNESS_DOWN_KEY) : @"Brightness Down",
+						@(KG_BRIGHTNESS_UP_KEY) : @"Brightness Up",
+						@(NX_KEYTYPE_ILLUMINATION_TOGGLE) : @"Toggle Illumination",
+						@(NX_KEYTYPE_ILLUMINATION_DOWN) : @"Illumination Down",
+						@(NX_KEYTYPE_ILLUMINATION_UP) : @"Illumination Up",
+						@(NX_KEYTYPE_REWIND) : @"Rewind",
+						@(NX_KEYTYPE_PLAY) : @"Play/Pause",
+						@(NX_KEYTYPE_FAST) : @"Fast-Forward",
+						@(NX_KEYTYPE_MUTE) : @"Mute",
+						@(NX_KEYTYPE_SOUND_DOWN) : @"Volume Down",
+						@(NX_KEYTYPE_SOUND_UP) : @"Volume Up",
+						@(NX_KEYTYPE_VIDMIRROR) : @"Mirror Displays",
+						@(KG_EXPOSE_KEY) : @"Exposé",
+						@(KG_DASHBOARD_KEY) : @"Dashboard",
+						@(KG_LAUNCHPAD_KEY) : @"Launchpad",
+						};
 	
-	keyCodes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                N(KG_KEY_F1), FF_F1_KEYID,
-                N(KG_KEY_F2), FF_F2_KEYID,
-                N(KG_KEY_F3), FF_F3_KEYID,
-                N(KG_KEY_F4), FF_F4_KEYID,
-                N(KG_KEY_F5), FF_F5_KEYID,
-                N(KG_KEY_F6), FF_F6_KEYID,
-                N(KG_KEY_F7), FF_F7_KEYID,
-                N(KG_KEY_F8), FF_F8_KEYID,
-                N(KG_KEY_F9), FF_F9_KEYID,
-                N(KG_KEY_F10), FF_F10_KEYID,
-                N(KG_KEY_F11), FF_F11_KEYID,
-                N(KG_KEY_F12), FF_F12_KEYID,
-                nil];
-	specialCodes = [[NSDictionary alloc] initWithObjectsAndKeys:
-                    N(NX_KEYTYPE_BRIGHTNESS_DOWN), FF_BRIGHTNESS_DOWN_ID_LAPTOP,
-                    N(NX_KEYTYPE_BRIGHTNESS_UP), FF_BRIGHTNESS_UP_ID_LAPTOP,
-                    N(KG_BRIGHTNESS_DOWN_KEY), FF_BRIGHTNESS_DOWN_ID_EXTERNAL,
-                    N(KG_BRIGHTNESS_UP_KEY), FF_BRIGHTNESS_UP_ID_EXTERNAL,
-                    N(NX_KEYTYPE_ILLUMINATION_TOGGLE), FF_ILLUMINATION_TOGGLE_ID,
-                    N(NX_KEYTYPE_ILLUMINATION_DOWN), FF_ILLUMINATION_DOWN_ID,
-                    N(NX_KEYTYPE_ILLUMINATION_UP), FF_ILLUMINATION_UP_ID,
-                    N(NX_KEYTYPE_REWIND), FF_REWIND_ID,
-                    N(NX_KEYTYPE_PLAY), FF_PLAYPAUSE_ID,
-                    N(NX_KEYTYPE_FAST), FF_FASTFORWARD_ID,
-                    N(NX_KEYTYPE_MUTE), FF_MUTE_ID,
-                    N(NX_KEYTYPE_SOUND_DOWN), FF_VOLUME_DOWN_ID,
-                    N(NX_KEYTYPE_SOUND_UP), FF_VOLUME_UP_ID,
-                    N(NX_KEYTYPE_VIDMIRROR), FF_VIDEO_MIRROR_ID,
-                    N(KG_EXPOSE_KEY), FF_EXPOSE_ID,
-                    N(KG_DASHBOARD_KEY), FF_DASHBOARD_ID,
-                    N(KG_LAUNCHPAD_KEY), FF_LAUNCHPAD_ID,
-                    nil];
+	keyCodes = @{
+				 FF_F1_KEYID : @(KG_KEY_F1),
+				 FF_F2_KEYID : @(KG_KEY_F2),
+				 FF_F3_KEYID : @(KG_KEY_F3),
+				 FF_F4_KEYID : @(KG_KEY_F4),
+				 FF_F5_KEYID : @(KG_KEY_F5),
+				 FF_F6_KEYID : @(KG_KEY_F6),
+				 FF_F7_KEYID : @(KG_KEY_F7),
+				 FF_F8_KEYID : @(KG_KEY_F8),
+				 FF_F9_KEYID : @(KG_KEY_F9),
+				 FF_F10_KEYID : @(KG_KEY_F10),
+				 FF_F11_KEYID : @(KG_KEY_F11),
+				 FF_F12_KEYID : @(KG_KEY_F12),
+				 };
+	specialCodes = @{
+					 FF_BRIGHTNESS_DOWN_ID_LAPTOP : @(NX_KEYTYPE_BRIGHTNESS_DOWN),
+					 FF_BRIGHTNESS_UP_ID_LAPTOP : @(NX_KEYTYPE_BRIGHTNESS_UP),
+					 FF_BRIGHTNESS_DOWN_ID_EXTERNAL : @(KG_BRIGHTNESS_DOWN_KEY),
+					 FF_BRIGHTNESS_UP_ID_EXTERNAL : @(KG_BRIGHTNESS_UP_KEY),
+					 FF_ILLUMINATION_TOGGLE_ID : @(NX_KEYTYPE_ILLUMINATION_TOGGLE),
+					 FF_ILLUMINATION_DOWN_ID : @(NX_KEYTYPE_ILLUMINATION_DOWN),
+					 FF_ILLUMINATION_UP_ID : @(NX_KEYTYPE_ILLUMINATION_UP),
+					 FF_REWIND_ID : @(NX_KEYTYPE_REWIND),
+					 FF_PLAYPAUSE_ID : @(NX_KEYTYPE_PLAY),
+					 FF_FASTFORWARD_ID : @(NX_KEYTYPE_FAST),
+					 FF_MUTE_ID : @(NX_KEYTYPE_MUTE),
+					 FF_VOLUME_DOWN_ID : @(NX_KEYTYPE_SOUND_DOWN),
+					 FF_VOLUME_UP_ID : @(NX_KEYTYPE_SOUND_UP),
+					 FF_VIDEO_MIRROR_ID : @(NX_KEYTYPE_VIDMIRROR),
+					 FF_EXPOSE_ID : @(KG_EXPOSE_KEY),
+					 FF_DASHBOARD_ID : @(KG_DASHBOARD_KEY),
+					 FF_LAUNCHPAD_ID : @(KG_LAUNCHPAD_KEY),
+					 };
 }
 
 /*

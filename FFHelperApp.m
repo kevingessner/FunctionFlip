@@ -157,7 +157,7 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 
   if (AXIsProcessTrustedWithOptions != NULL) {
       // 10.9 or higher
-      NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanFalse, kAXTrustedCheckOptionPrompt, nil];
+      NSDictionary *options = @{ (__bridge NSString *)kAXTrustedCheckOptionPrompt : (id)kCFBooleanFalse };
       eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
                                       eventMask, myCGEventCallback, NULL);
       if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options) || !eventTapTest) {

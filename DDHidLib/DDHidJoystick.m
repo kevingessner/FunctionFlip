@@ -233,7 +233,7 @@
         if (usagePage == kHIDPage_GenericDesktop &&
             (usageId == kHIDUsage_GD_Joystick || usageId == kHIDUsage_GD_GamePad)) 
         {
-            [mLogicalDeviceElements addObject: [NSArray arrayWithObject: element]];
+            [mLogicalDeviceElements addObject: @[element]];
         }
     }
 }
