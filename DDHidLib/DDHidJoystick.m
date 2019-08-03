@@ -122,7 +122,7 @@
     mLogicalDeviceElements = [[NSMutableArray alloc] init];
 
     [self initLogicalDeviceElements];
-    int logicalDeviceCount = [mLogicalDeviceElements count];
+    NSUInteger logicalDeviceCount = [mLogicalDeviceElements count];
     if (logicalDeviceCount ==  0)
     {
         return nil;
@@ -151,7 +151,7 @@
     mButtonElements = nil;
 }
 
-- (int) logicalDeviceCount;
+- (NSUInteger) logicalDeviceCount;
 {
     return [mLogicalDeviceElements count];
 }
@@ -167,7 +167,7 @@
     return mButtonElements; 
 }
 
-- (unsigned) numberOfButtons;
+- (NSUInteger) numberOfButtons;
 {
     return [mButtonElements count];
 }
@@ -175,7 +175,7 @@
 #pragma mark -
 #pragma mark Sticks - indexed accessors
 
-- (unsigned int) countOfSticks 
+- (NSUInteger) countOfSticks 
 {
     return [mSticks count];
 }
@@ -351,11 +351,11 @@
             forElement: (DDHidElement *) element;
 {
     int normalizedUnits = DDHID_JOYSTICK_VALUE_MAX - DDHID_JOYSTICK_VALUE_MIN;
-    int elementUnits = [element maxValue] - [element minValue];
+    long elementUnits = [element maxValue] - [element minValue];
     
-    int normalizedValue = (((int64_t)(value - [element minValue]) * normalizedUnits) /
+    long normalizedValue = (((int64_t)(value - [element minValue]) * normalizedUnits) /
                            elementUnits) + DDHID_JOYSTICK_VALUE_MIN;
-    return normalizedValue;
+    return (int)normalizedValue;
 }
 
 - (int) povValue: (int) value
@@ -373,7 +373,7 @@
     
     // Do like DirectInput and express the hatswitch value in hundredths of a
 	// degree, clockwise from north.
-	return 36000 / (max - min + 1) * (value - min);
+    return (int)(36000 / (max - min + 1) * (value - min));
 }
 
 - (BOOL) findStick: (unsigned *) stick
@@ -613,7 +613,7 @@
 #pragma mark -
 #pragma mark mStickElements - indexed accessors
 
-- (unsigned int) countOfStickElements 
+- (NSUInteger) countOfStickElements
 {
     return [mStickElements count];
 }
@@ -626,7 +626,7 @@
 #pragma mark -
 #pragma mark PovElements - indexed accessors
 
-- (unsigned int) countOfPovElements;
+- (NSUInteger) countOfPovElements;
 {
     return [mPovElements count];
 }

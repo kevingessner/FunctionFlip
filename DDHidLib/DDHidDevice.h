@@ -45,7 +45,7 @@
     BOOL mListenInExclusiveMode;
     DDHidQueue * mDefaultQueue;
     int mTag;
-    int mLogicalDeviceNumber;
+    NSUInteger mLogicalDeviceNumber;
 }
 
 - (id) initWithDevice: (io_object_t) device error: (NSError **) error;
