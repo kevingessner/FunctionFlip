@@ -55,7 +55,7 @@
 	NSURL *helperAppURL = [NSURL fileURLWithPath:[FFHelperAppController pathToHelperApp]];
 
 	unsigned options = NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync;
-	[[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:helperAppURL]
+	[[NSWorkspace sharedWorkspace] openURLs:@[helperAppURL]
 	                withAppBundleIdentifier:nil
 	                                options:options
 	         additionalEventParamDescriptor:nil

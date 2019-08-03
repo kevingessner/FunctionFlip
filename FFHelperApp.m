@@ -91,6 +91,7 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
                 CGEventSourceRef sourceRef = CGEventCreateSourceFromEvent(ev);
                 CGEventRef newEvent = CGEventCreateKeyboardEvent(sourceRef, [regularKey intValue], keyState);
                 CFRelease(sourceRef);
+                CFAutorelease(newEvent);
                 return newEvent;
 			}
 		}
@@ -114,7 +115,6 @@ myCGEventCallback(CGEventTapProxy proxy, CGEventType type,
 					newE = [NSEvent otherEventWithType:NSSystemDefined location:[e locationInWindow] modifierFlags:([e modifierFlags] | ([e type] == NSKeyDown ? 0xa00 : 0xb00)) timestamp:[e timestamp] windowNumber:[e windowNumber] context:[e context] subtype:8 data1:(specialCode << 16) + (([e type] == NSKeyDown  ? 0x0a : 0x0b) << 8) data2:-1];
 				}
                 CGEventRef newEvent = [newE CGEvent];
-				CFRetain(newEvent); // newEvent gets released by the event system
 				return newEvent;
 			}
 		}
@@ -157,7 +157,7 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 
   if (AXIsProcessTrustedWithOptions != NULL) {
       // 10.9 or higher
-      NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:(id)kCFBooleanFalse, kAXTrustedCheckOptionPrompt, nil];
+      NSDictionary *options = @{ (__bridge NSString *)kAXTrustedCheckOptionPrompt : (id)kCFBooleanFalse };
       eventTapTest = CGEventTapCreate(kCGHIDEventTap, kCGHeadInsertEventTap, 0,
                                       eventMask, myCGEventCallback, NULL);
       if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options) || !eventTapTest) {
@@ -203,6 +203,9 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
   // Add to the current run loop.
   CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource,
 		     kCFRunLoopCommonModes);
+
+  // Source is retained by the run loop.
+  CFRelease(runLoopSource);
 
   // Enable the event tap.
   CGEventTapEnable(eventTap, true);

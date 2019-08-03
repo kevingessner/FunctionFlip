@@ -64,10 +64,14 @@ static void usbDeviceRemoved(void *refCon, io_iterator_t iterator) {
 		CFStringRef deviceName = CFStringCreateWithCString(kCFAllocatorDefault,
 														   deviceNameChars,
 														   kCFStringEncodingASCII);
-		if (CFStringCompare(deviceName, CFSTR("OHCI Root Hub Simulation"), 0) == kCFCompareEqualTo)
+        if (CFStringCompare(deviceName, CFSTR("OHCI Root Hub Simulation"), 0) == kCFCompareEqualTo) {
+            CFRelease(deviceName);
 			deviceName = CFCopyLocalizedString(CFSTR("USB Bus"), "");
-		else if (CFStringCompare(deviceName, CFSTR("EHCI Root Hub Simulation"), 0) == kCFCompareEqualTo)
+        }
+        else if (CFStringCompare(deviceName, CFSTR("EHCI Root Hub Simulation"), 0) == kCFCompareEqualTo) {
+            CFRelease(deviceName);
 			deviceName = CFCopyLocalizedString(CFSTR("USB 2.0 Bus"), "");
+        }
 
 		// NSLog(@"USB Device Detached: %@" , deviceName);
 		[(__bridge FFHelperApp *)refCon keyboardListChanged];

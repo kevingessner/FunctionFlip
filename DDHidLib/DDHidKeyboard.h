@@ -44,7 +44,7 @@
 
 - (NSArray *) keyElements;
 
-- (unsigned) numberOfKeys;
+- (NSUInteger) numberOfKeys;
 
 - (void) addElementsToQueue: (DDHidQueue *) queue;
 

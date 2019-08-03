@@ -44,13 +44,13 @@
 #pragma mark -
 #pragma mark StickElements - indexed accessors
 
-- (unsigned int) countOfStickElements;
+- (NSUInteger) countOfStickElements;
 - (DDHidElement *) objectInStickElementsAtIndex: (unsigned int)index;
 
 #pragma mark -
 #pragma mark PovElements - indexed accessors
 
-- (unsigned int) countOfPovElements;
+- (NSUInteger) countOfPovElements;
 - (DDHidElement *) objectInPovElementsAtIndex: (unsigned int)index;
 
 - (NSArray *) allElements;
@@ -74,19 +74,19 @@
          logicalDeviceNumber: (int) logicalDeviceNumber 
                        error: (NSError **) error;
 
-- (int) logicalDeviceCount;
+- (NSUInteger) logicalDeviceCount;
 
 #pragma mark -
 #pragma mark Joystick Elements
 
-- (unsigned) numberOfButtons;
+- (NSUInteger) numberOfButtons;
 
 - (NSArray *) buttonElements;
 
 #pragma mark -
 #pragma mark Sticks - indexed accessors
 
-- (unsigned int) countOfSticks;
+- (NSUInteger) countOfSticks;
 - (DDHidJoystickStick *) objectInSticksAtIndex: (unsigned int)index;
 
 - (void) addElementsToQueue: (DDHidQueue *) queue;

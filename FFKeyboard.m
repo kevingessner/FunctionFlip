@@ -55,6 +55,7 @@ static NSMutableDictionary *keyboards;
 		CFStringRef fnusagemap = IORegistryEntrySearchCFProperty([self.device ioDevice], kIOServicePlane, (CFStringRef)@"FnFunctionUsageMap", kCFAllocatorDefault, kIORegistryIterateRecursively);
 		if(fnusagemap) { // if we've got a non-special keyboard, this won't be set
 			NSArray *codes = [(__bridge NSString *)fnusagemap componentsSeparatedByString:@","];
+            CFRelease(fnusagemap);
 			NSMutableArray *fkeyCodes = [NSMutableArray array];
 			NSMutableArray *specialCodes = [NSMutableArray array];
 			NSInteger index = 0;
