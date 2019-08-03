@@ -52,7 +52,7 @@
 - (id) initLogicalWithDevice: (io_object_t) device
          logicalDeviceNumber: (int) logicalDeviceNumber
                        error: (NSError **) error;
-- (int) logicalDeviceCount;
+- (NSUInteger) logicalDeviceCount;
 
 #pragma mark -
 #pragma mark Finding Devices

@@ -169,7 +169,7 @@
     return devices;
 }
 
-- (int) logicalDeviceCount;
+- (NSUInteger) logicalDeviceCount;
 {
     return 1;
 }
