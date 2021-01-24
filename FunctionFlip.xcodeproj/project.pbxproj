@@ -575,7 +575,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2.2.4;
+				CURRENT_PROJECT_VERSION = 2.2.5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -587,7 +587,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "FFPrefPane-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -608,7 +608,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 2.2.4;
+				CURRENT_PROJECT_VERSION = 2.2.5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -620,7 +620,7 @@
 				GCC_PREFIX_HEADER = FunctionFlip_Prefix.pch;
 				INFOPLIST_FILE = "FFPrefPane-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -653,7 +653,7 @@
 				GCC_PREFIX_HEADER = FunctionFlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevingessner.FFHelperApp;
 				PRODUCT_NAME = FunctionFlip;
 				SDKROOT = macosx;
@@ -677,7 +677,7 @@
 				GCC_PREFIX_HEADER = FunctionFlip_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevingessner.FFHelperApp;
 				PRODUCT_NAME = FunctionFlip;
 				SDKROOT = macosx;

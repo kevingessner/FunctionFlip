@@ -1,0 +1,20 @@
+language: objective-c
+xcode_project: FunctionFlip.xcodeproj
+os: osx
+osx_image: xcode12.3
+xcode_destination: platform=macOS
+install: skip
+script:
+  # working directory is the repo, e.g. /Users/travis/build/kevingessner/FunctionFlip
+  - xcodebuild -list -project FunctionFlip.xcodeproj
+  - xcodebuild -target FunctionFlip
+  - tar -czf FunctionFlip.prefPane.tgz -C build/Release/ FunctionFlip.prefPane/
+deploy:
+  provider: releases
+  file: FunctionFlip.prefPane.tgz
+  edge: true # opt in to dpl v2
+  draft: true
+  overwrite: true
+  prerelease: true
+  on:
+    all_branches: true
